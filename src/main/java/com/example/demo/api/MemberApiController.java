@@ -1,45 +1,36 @@
 package com.example.demo.api;
 
-import com.example.demo.domain.Member;
+import com.example.demo.dto.MemberSaveRequestDto;
 import com.example.demo.service.MemberService;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-
-@RestController
+/**
+ *  @RestController : 컨트롤러에서 JSON 반환되는 컨트롤러를 만들어준다.
+ *                @RequestBody(required=false) String param ..
+ *                (예전에는 @ResponseBody를 각 메소드마다 선언했던 것을 한번에 사용할 수 있도록 해준다고 생각.)
+ */
 @RequiredArgsConstructor
+@RestController
 public class MemberApiController {
 
-    // Controller -> Service 필요!
-    private static MemberService memberService;
+    private final MemberService memberService;
 
     // Member Entity 대신에 Dto 생성해서 사용한다.
     // Api 스펙이 변경된다해도 Dto만 수정하면 됨.
+    /**
+     * @GetMapping : 예전에는  @RequestMapping(method = RequestMethod.GET)으로 사용.
+     */
     @PostMapping("/api/v1/members")
-    public CreateMemberResponse saveMember(@RequestBody @Valid CreateMemberRequest request){
-        Member member = new Member();
-        member.setUsername(request.getName());
-
-        // 서비스 로직 필요.
-        Long id = memberService.join(member);
-        return new CreateMemberResponse(id);
+    public Long saveMember(@RequestBody MemberSaveRequestDto requestDto){
+        return memberService.save(requestDto);
     }
 
-    @Data
-    static class CreateMemberRequest {
-        private String name;
-    }
-
-    @Data
-    static class CreateMemberResponse {
-        private Long id;
-
-        public CreateMemberResponse(Long id) {
-            this.id = id;
-        }
+    @GetMapping("/hello")
+    public String hello(){
+        return "hello";
     }
 }
