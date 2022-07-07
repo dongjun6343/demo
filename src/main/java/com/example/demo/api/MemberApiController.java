@@ -3,10 +3,7 @@ package com.example.demo.api;
 import com.example.demo.dto.MemberSaveRequestDto;
 import com.example.demo.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  *  @RestController : 컨트롤러에서 JSON 반환되는 컨트롤러를 만들어준다.
@@ -27,6 +24,11 @@ public class MemberApiController {
     @PostMapping("/api/v1/members")
     public Long saveMember(@RequestBody MemberSaveRequestDto requestDto){
         return memberService.save(requestDto);
+    }
+
+    @PutMapping("/api/v1/members/{id}")
+    public Long update(@PathVariable Long id, @RequestBody MemberSaveRequestDto requestDto){
+        return memberService.update(id, requestDto);
     }
 
     @GetMapping("/hello")

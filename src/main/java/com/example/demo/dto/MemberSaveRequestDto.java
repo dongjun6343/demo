@@ -9,14 +9,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MemberSaveRequestDto {
     private String name;
+    private String phone;
+    private String address;
 
     @Builder
-    public MemberSaveRequestDto(String name) {
+    public MemberSaveRequestDto(String name, String phone, String address) {
         this.name = name;
+        this.phone = phone;
+        this.address = address;
     }
 
     // username(name) 추가 안하면  NULL not allowed for column "USERNAME" 에러발생.
     public Member toEntity(){
-        return Member.builder().username(name).build();
+        return Member.builder().
+                username(name).
+                phone(phone).
+                address(address).
+                build();
     }
 }

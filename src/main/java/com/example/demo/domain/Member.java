@@ -3,7 +3,6 @@ package com.example.demo.domain;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -24,9 +23,23 @@ public class Member {
     @Column(length = 50 , nullable = false)
     private String username;
 
+    @Column(length = 50, nullable = false)
+    private String phone;
+
+    @Column(length = 200, nullable = false)
+    private String address;
+
     @Builder
-    public Member(Long id, String username) {
+    public Member(Long id, String username, String phone, String address) {
         this.id = id;
         this.username = username;
+        this.phone = phone;
+        this.address = address;
+    }
+
+    public void update(String username ,String phone, String address){
+        this.username = username;
+        this.phone = phone;
+        this.address = address;
     }
 }
