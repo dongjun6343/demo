@@ -1,5 +1,6 @@
 package com.example.demo.api;
 
+import com.example.demo.dto.MemberResponseDto;
 import com.example.demo.dto.MemberSaveRequestDto;
 import com.example.demo.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -18,9 +19,7 @@ public class MemberApiController {
 
     // Member Entity 대신에 Dto 생성해서 사용한다.
     // Api 스펙이 변경된다해도 Dto만 수정하면 됨.
-    /**
-     * @GetMapping : 예전에는  @RequestMapping(method = RequestMethod.GET)으로 사용.
-     */
+
     @PostMapping("/api/v1/members")
     public Long saveMember(@RequestBody MemberSaveRequestDto requestDto){
         return memberService.save(requestDto);
@@ -31,8 +30,12 @@ public class MemberApiController {
         return memberService.update(id, requestDto);
     }
 
-    @GetMapping("/hello")
-    public String hello(){
-        return "hello";
+    /**
+     * @GetMapping : 예전에는  @RequestMapping(method = RequestMethod.GET)으로 사용.
+     */
+    @GetMapping("/api/v1/members/{id}")
+    public MemberResponseDto findById(@PathVariable Long id){
+        return memberService.findById(id);
     }
+
 }

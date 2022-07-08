@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.Member;
+import com.example.demo.dto.MemberResponseDto;
 import com.example.demo.dto.MemberSaveRequestDto;
 import com.example.demo.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,5 +27,12 @@ public class MemberService {
                 "해당 회원번호가 없습니다. id =" + id));
         member.update(requestDto.getName(),requestDto.getPhone(), requestDto.getAddress());
         return id;
+    }
+
+    public MemberResponseDto findById(Long id) {
+        Member entity = memberRepository.findById(id).orElseThrow(() -> new IllegalArgumentException(
+                "해당 회원번호가 없습니다. id = " + id
+        ));
+        return new MemberResponseDto(entity);
     }
 }
