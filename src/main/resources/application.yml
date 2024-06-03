@@ -1,1 +1,28 @@
-spring.application.name=demo
+spring:
+  batch:
+    jdbc:
+      initialize-schema: always # ??? ?? ????? ??? ?? ?? ??
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:13306/RNDB2?useUnicode=true&characterEncoding=utf8&verifyServerCertificate=false&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: 9597
+    tomcat:
+      max-active: 50
+
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: false
+    add-properties: true
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
