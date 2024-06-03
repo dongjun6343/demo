@@ -37,7 +37,8 @@ public class HelloWorldJobConfig {
     @Bean
     public Step simpleStep1(JobRepository jobRepository, Tasklet testTasklet, PlatformTransactionManager platformTransactionManager) {
         return new StepBuilder("simpleStep1", jobRepository)
-                .tasklet(testTasklet, platformTransactionManager).build();
+                .tasklet(testTasklet, platformTransactionManager)
+                .build();
     }
 
     @Bean
