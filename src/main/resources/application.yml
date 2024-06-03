@@ -4,6 +4,7 @@ spring:
       enabled: true # true?? ?? Job? ????? ?? ??
       name: ${job.name:NONE} # --job.name=helloWorldJob (Edit Config -> Program Arguments ?? , NONE? ??? ??? ????. {job.name:NONE} ????? argument? ???? ??)
       # name: validateParamJob
+      # name: helloWorldJob
     jdbc:
       initialize-schema: always # ??? ?? ????? ??? ?? ?? ??
   datasource:
@@ -30,3 +31,9 @@ spring:
       hibernate:
         format_sql: true
         show_sql: true
+
+
+ # A bean with that name has already been defined in class path resource [com/batch/demo/job/HelloWorldJobConfig.class] and overriding is disabled.
+  # ->  spring.main.allow-bean-definition-overriding=true ??
+  main:
+    allow-bean-definition-overriding: true

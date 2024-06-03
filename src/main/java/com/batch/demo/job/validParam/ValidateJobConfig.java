@@ -30,7 +30,7 @@ public class ValidateJobConfig {
     @Bean
     public Step validateParamStep(JobRepository jobRepository, Tasklet validateTasklet, PlatformTransactionManager platformTransactionManager) {
         return new StepBuilder("validateParamStep", jobRepository)
-                .tasklet(validateTasklet, platformTransactionManager) // tx 처리
+                .tasklet(validateTasklet, platformTransactionManager)
                 .build();
     }
 

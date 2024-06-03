@@ -24,6 +24,8 @@ public class HelloWorldJobConfig {
     /**
      * 2.x버전에서는 의존성 주입해서 사용했지만,
      * JobBuilder 객체를 직접 사용하여 아래와 같이 설정하는 것이 권장됨.
+     *
+     * --job.name=helloWorldJob
      */
 
     @Bean
@@ -37,8 +39,7 @@ public class HelloWorldJobConfig {
     @Bean
     public Step simpleStep1(JobRepository jobRepository, Tasklet testTasklet, PlatformTransactionManager platformTransactionManager) {
         return new StepBuilder("simpleStep1", jobRepository)
-                .tasklet(testTasklet, platformTransactionManager)
-                .build();
+                .tasklet(testTasklet, platformTransactionManager).build();
     }
 
     @Bean
