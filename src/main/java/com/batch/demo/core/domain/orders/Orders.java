@@ -1,7 +1,9 @@
 package com.batch.demo.core.domain.orders;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.util.Date;
@@ -10,6 +12,8 @@ import java.util.Date;
 @Entity
 @Table(name = "orders")
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class Orders {
 
     @Id
