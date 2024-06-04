@@ -1,12 +1,11 @@
 spring:
   batch:
     job:
-      enabled: true # true?? ?? Job? ????? ?? ??
-      name: ${job.name:NONE} # --job.name=helloWorldJob (Edit Config -> Program Arguments ?? , NONE? ??? ??? ????. {job.name:NONE} ????? argument? ???? ??)
-      # name: validateParamJob
-      # name: helloWorldJob
+      name: ${job.name:NONE} # --job.name=helloWorldJob
+      #enabled: false
+      #enabled: true(기본값) job name이 있으면 해당 job name으로 실행, false이면 job name이 있어도 무시한다. 스케쥴링을 사용한다면 false처리
     jdbc:
-      initialize-schema: always # ??? ?? ????? ??? ?? ?? ??
+      initialize-schema: always # 메타 데이터 스키마 생성
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:13306/RNDB2?useUnicode=true&characterEncoding=utf8&verifyServerCertificate=false&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
@@ -34,6 +33,6 @@ spring:
 
 
  # A bean with that name has already been defined in class path resource [com/batch/demo/job/HelloWorldJobConfig.class] and overriding is disabled.
-  # ->  spring.main.allow-bean-definition-overriding=true ??
+ # ->  spring.main.allow-bean-definition-overriding=true 설정
   main:
     allow-bean-definition-overriding: true
