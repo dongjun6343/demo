@@ -13,8 +13,6 @@ import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.xml.crypto.Data;
-
 import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
