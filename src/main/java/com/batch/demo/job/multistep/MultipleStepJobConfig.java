@@ -78,8 +78,8 @@ public class MultipleStepJobConfig {
      * step2
      * executionContext.put("someKey", "hello!!"); 추가
      */
-    @StepScope
     @Bean
+    @StepScope
     public Tasklet multipleStep2Tasklet() {
         return ((contribution, chunkContext) -> {
             System.out.println("step2");
@@ -94,8 +94,8 @@ public class MultipleStepJobConfig {
      * step3
      * step2에서 추가한 키값에 있는 벨류값 찾기
      */
-    @StepScope
     @Bean
+    @StepScope
     public Tasklet multipleStep3Tasklet() {
         return ((contribution, chunkContext) -> {
             System.out.println("step3");

@@ -75,8 +75,8 @@ public class FileDataReadWriteConfig {
     }
 
 
-    @StepScope
     @Bean
+    @StepScope
     // Player를 PlayerYears로 변경한다.
     public ItemProcessor<Player, PlayerYears> playerItemProcessor() {
         return new ItemProcessor<Player, PlayerYears>() {
@@ -87,8 +87,8 @@ public class FileDataReadWriteConfig {
         };
     }
 
-    @StepScope
     @Bean
+    @StepScope
     public FlatFileItemWriter<PlayerYears> playerItemWriter() {
         BeanWrapperFieldExtractor<PlayerYears> fieldExtractor = new BeanWrapperFieldExtractor<>();
         fieldExtractor.setNames(new String[]{"id", "lastName", "position", "yearsExperience"});

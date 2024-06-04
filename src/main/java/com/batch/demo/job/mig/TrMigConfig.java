@@ -118,8 +118,8 @@ public class TrMigConfig {
 //    }
 
     //2. RepositoryItemWriter 사용하지 않고 ItemWriter 직접 구현하는 방법
-    @StepScope
     @Bean
+    @StepScope
     public ItemWriter<Accounts> trOrdersWriter() {
 //        return new ItemWriter<Accounts>() {
 //            @Override
@@ -134,8 +134,8 @@ public class TrMigConfig {
     /**
      * Orders의 데이터 추출하기
      */
-    @StepScope
     @Bean
+    @StepScope
     public RepositoryItemReader<Orders> trOrdersReader() {
         return new RepositoryItemReaderBuilder<Orders>()
                 .name("trOrdersReader")
