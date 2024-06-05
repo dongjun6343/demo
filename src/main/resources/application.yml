@@ -2,7 +2,7 @@ spring:
   batch:
     job:
       name: ${job.name:NONE} # --job.name=helloWorldJob
-      #enabled: false
+      enabled: false
       #enabled: true(기본값) job name이 있으면 해당 job name으로 실행, false이면 job name이 있어도 무시한다. 스케쥴링을 사용한다면 false처리
     jdbc:
       initialize-schema: always # 메타 데이터 스키마 생성
